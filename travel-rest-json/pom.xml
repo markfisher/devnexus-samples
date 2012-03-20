@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springsource</groupId>
 	<artifactId>samples</artifactId>
-	<name>travel-monolith</name>
+	<name>travel-rest-json</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -129,7 +129,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<warName>travel-monolith</warName>
+					<warName>travel-rest-json</warName>
 				</configuration>
 			</plugin>
 			<plugin>
