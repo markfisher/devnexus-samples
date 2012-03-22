@@ -12,7 +12,17 @@ public class TravelService {
 	public Reward generateReward(Itinerary itinerary) {
 		Reward reward = new Reward();
 		reward.setUsername(itinerary.getUsername());
-		reward.setPoints(500); // determine from the itinerary
+		int points = 0;
+		if (itinerary.getFlightReservation() != null) {
+			points += 500;
+		}
+		if (itinerary.getHotelReservation() != null) {
+			points += 250;
+		}
+		if (itinerary.getCarReservation() != null) {
+			points += 75;
+		}
+		reward.setPoints(points);
 		System.out.println("generated " + reward.getPoints() + " point reward for " + reward.getUsername());
 		return reward;
 	}

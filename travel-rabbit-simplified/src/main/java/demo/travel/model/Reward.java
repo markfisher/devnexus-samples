@@ -4,6 +4,13 @@ public class Reward {
 
 	private String username;
 	private int points;
+	//private Date date;
+
+	/*
+	public Reward() {
+		this.date = new Date();
+	}
+	*/
 
 	public String getUsername() {
 		return username;
@@ -20,4 +27,10 @@ public class Reward {
 	public void setPoints(int points) {
 		this.points = points;
 	}
+
+	/*
+	public String getDate() {
+		return this.date;
+	}
+	*/
 }

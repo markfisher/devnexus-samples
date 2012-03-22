@@ -29,7 +29,7 @@
 
 	<int-amqp:outbound-channel-adapter id="outbound" exchange-name-expression="headers.exchange"/>
 
-	<int:logging-channel-adapter id="logger" log-full-message="true"/>
+	<int:logging-channel-adapter id="logger" expression="payload.printStackTrace()"/>
 
 	<rabbit:queue name="travel.rewards"/>
 
