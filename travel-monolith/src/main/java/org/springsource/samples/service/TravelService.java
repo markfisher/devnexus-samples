@@ -8,6 +8,7 @@ import org.springsource.samples.data.CarReservationRepository;
 import org.springsource.samples.data.FlightReservationRepository;
 import org.springsource.samples.data.HotelReservationRepository;
 import org.springsource.samples.data.ItineraryRepository;
+import org.springsource.samples.data.Reward;
 import org.springsource.samples.model.CarReservation;
 import org.springsource.samples.model.FlightReservation;
 import org.springsource.samples.model.HotelReservation;
@@ -48,10 +49,29 @@ public class TravelService {
 
 	public void addItinerary(Itinerary itinerary) {
 		String itineraryId = this.itineraryRepository.add(itinerary);
-		System.out.println("itin ID is: " + itineraryId);
+		System.out.println("itinerary ID is: " + itineraryId);
 		this.flightReservationRepository.add(itinerary.getFlightReservation(), itineraryId);
 		this.hotelReservationRepository.add(itinerary.getHotelReservation(), itineraryId);
 		this.carReservationRepository.add(itinerary.getCarReservation(), itineraryId);
+		this.generateReward(itinerary);
+	}
+
+	public Reward generateReward(Itinerary itinerary) {
+		Reward reward = new Reward();
+		reward.setUsername(itinerary.getUsername());
+		int points = 0;
+		if (itinerary.getFlightReservation() != null) {
+			points += 500;
+		}
+		if (itinerary.getHotelReservation() != null) {
+			points += 250;
+		}
+		if (itinerary.getCarReservation() != null) {
+			points += 75;
+		}
+		reward.setPoints(points);
+		System.out.println("generated " + reward.getPoints() + " point reward for " + reward.getUsername());
+		return reward;
 	}
 
 }
